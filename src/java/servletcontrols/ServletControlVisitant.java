@@ -63,7 +63,9 @@ public class ServletControlVisitant extends HttpServlet {
             
             if(anfitrioes.get(i).getQuantidadeMaxPessoas()>0 && anfitrioes.get(i).getQuantidadeDias()>quantidadeDias){
             
-                anfitrioes.get(i).getVisitantes().add(visitante);
+                    anfitrioes.get(i).getVisitantes().add(visitante);
+                    break;
+                
                 }
             
             }

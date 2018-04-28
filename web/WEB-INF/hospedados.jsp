@@ -6,6 +6,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% List<Visitante> visitantes = (List<Visitante>) request.getAttribute("hospedados");%>
+<%  int cod = (Integer) request.getAttribute("codigo"); %>
+<% List<Anfitriao> anfitrioes = (List<Anfitriao>) request.getAttribute("anfitrioes");%>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -30,11 +34,11 @@
                 </thread>
                 <tbody>
     
-            <% for (int i = 0; i < visitantes.size(); i++) {%>
+                    <% for (int i = 0; i < anfitrioes.get(cod).getVisitantes().size(); i++) {%>
                 <tr>
-                    <td> <%= visitantes.get(i).getNome() %></td>
-                    <td> <%= visitantes.get(i).getPais()%></td>
-                    <td> <%= visitantes.get(i).getQuantidadeDias() %></td>
+                    <td> <%= anfitrioes.get(cod).getVisitantes().get(i).getNome() %></td>
+                    <td> <%= anfitrioes.get(cod).getVisitantes().get(i).getPais()%></td>
+                    <td> <%= anfitrioes.get(cod).getVisitantes().get(i).getQuantidadeDias() %></td>
                     
                  </tr>
                 <%}%>

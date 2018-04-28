@@ -18,7 +18,7 @@ import projetobuddy.Anfitriao;
 import projetobuddy.ListaAnfitriao;
 import projetobuddy.Pessoa;
 
-@WebServlet(name = "ServletControl", urlPatterns = {"/lista-anfitriao.html", "/cadastrar-anfitriao.html","/visitantes-hospedagem.html"})
+@WebServlet(name = "ServletControl", urlPatterns = {"/lista-anfitriao.html", "/cadastrar-anfitriao.html", "/visitantes-hospedagem.html"})
 public class ServletControlAnfitriao extends HttpServlet {
 
     List<Anfitriao> anfitrioes = ListaAnfitriao.getInstance();
@@ -32,7 +32,7 @@ public class ServletControlAnfitriao extends HttpServlet {
         } else if ("/cadastrar-anfitriao.html".equals(request.getServletPath())) {
             cadastrarAnfitriao(request, response);
 
-        }else if("/visitantes-hospedagem.html".equals(request.getServletPath())) {
+        } else if ("/visitantes-hospedagem.html".equals(request.getServletPath())) {
             verHospedados(request, response);
         }
     }
@@ -49,7 +49,6 @@ public class ServletControlAnfitriao extends HttpServlet {
         String endereco = request.getParameter("endereco");
         anfitrioes.add(new Anfitriao(nome, cidade, endereco, quantidadeDias, quantidadePessoas));
         response.sendRedirect("index.html");
-
 
     }
 
@@ -73,10 +72,16 @@ public class ServletControlAnfitriao extends HttpServlet {
 
         int cod = Integer.parseInt(request.getParameter("codigo"));
 
+                List<Anfitriao> anfitrioes = ListaAnfitriao.getInstance();
+
+                
         anfitrioes.get(cod).getVisitantes();
-        request.setAttribute("hospedados",  anfitrioes.get(cod).getVisitantes());
+        request.setAttribute("codigo", cod);
+
+        request.setAttribute("anfitrioes", anfitrioes);
+        request.setAttribute("hospedados", anfitrioes.get(cod).getVisitantes());
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/hospedados.jsp");
         despachante.forward(request, response);
 
-        }
+    }
 }
