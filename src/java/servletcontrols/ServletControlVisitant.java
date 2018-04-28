@@ -59,18 +59,27 @@ public class ServletControlVisitant extends HttpServlet {
         Visitante visitante = new Visitante(nome,pais,quantidadeDias);
         visitantes.add(visitante);
         
+        int flag=0;
         for (int  i = 0; i< anfitrioes.size();i++){
             
             if(anfitrioes.get(i).getQuantidadeMaxPessoas()>0 && anfitrioes.get(i).getQuantidadeDias()>quantidadeDias){
-            
+                    flag=1;
                     anfitrioes.get(i).getVisitantes().add(visitante);
+                    anfitrioes.get(i).setQuantidadeMaxPessoas();
                     break;
                 
                 }
             
             }
+        
+        if(flag==0){
+        
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/cadastrar-anfitrioes.jsp");
+        despachante.forward(request, response);
+        }else {
         response.sendRedirect("index.html");
         
+        }
         
 
     }

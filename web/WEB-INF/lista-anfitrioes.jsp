@@ -25,7 +25,7 @@
                     <th> Endereço</th>
                     <th> Cidade</th>
                     <th> Quantidade de dias disponíveis</th>
-                    <th> Máximo de Pessoas alocadas</th>
+                    <th> Vagas restantes</th>
                     <th> Visitantes hospedados</th>
                     </tr>
                 </thread>

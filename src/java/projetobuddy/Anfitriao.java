@@ -37,8 +37,8 @@ public class Anfitriao {
         return quantidadeMaxPessoas;
     }
 
-    public void setQuantidadeMaxPessoas(int quantidadeMaxPessoas) {
-        this.quantidadeMaxPessoas = quantidadeMaxPessoas;
+    public void setQuantidadeMaxPessoas() {
+        this.quantidadeMaxPessoas = quantidadeMaxPessoas -1;
     }
 
     public Anfitriao(String nome, String endereco, String cidade, int quantidadeDias,int quantidadePessoas) {
@@ -92,14 +92,4 @@ public class Anfitriao {
     public void setQuantidadeDias(int decrecementa) {
         this.quantidadeDias = quantidadeDias - decrecementa;
     }
-
-    public static int getQuantidadeDiasMaximo() {
-        return quantidadeDiasMaximo;
-    }
-
-    public static void setQuantidadeDiasMaximo(int quantidadeDiasMaximo) {
-        Anfitriao.quantidadeDiasMaximo = quantidadeDiasMaximo;
-    }
-
-    
 }
